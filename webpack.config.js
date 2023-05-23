@@ -8,11 +8,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 const target = isDev ? 'web' : 'browserslist';
+const devtool = isDev ? 'source-map' : undefined;
 
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`);
 
 module.exports = {
   mode: 'development',
+  devtool,
   target,
   devServer: {
     port: 3000,
